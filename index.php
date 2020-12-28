@@ -18,7 +18,7 @@
     <br/>
     <br/>
 <!-- <form method="get" action="success.php"> -->
-    <form method="post" action="success.php">
+    <form method="post" action="success.php" enctype="multipart/form-data">
         <div class="form-group">
             <label for="firstName">First Name</label>
             <input required type="text" class="form-control" id="firstName" name="firstName">
@@ -36,8 +36,7 @@
             <select class="form-control" id="specialty" name="specialty">
                 <?php while($r = $results->fetch(PDO::FETCH_ASSOC)){?>
                     <option value=<?php echo $r['specialty_id']?>><?php echo $r['name']?></option>
-                <?php }?>
-            
+                <?php }?>         
             </select>
         </div>
         <div class="form-group">
@@ -50,27 +49,34 @@
             <input type="text" class="form-control" id="phone" name="phone" aria-describedby="phoneHelp">
             <small id="phoneHelp" name="phoneHelp" class="form-text text-muted">We'll never share your phone number with anyone else.</small>
         </div>
-    <!-- 
-        <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1">
+
+<!-- This is from Trevoir Williams class
+        <div class="custom-file">
+            <input type="file" accept="image/*" class="custom-file-input" id="avatar" name="avatar"/>
+            <label class="custom-file-label" for="avatar">Choose file</label>           
+            <small id="avatarHelp" name="avatarHelp" class="form-text text-danger">Image Upload is Optional</small>
         </div>
-        <div class="form-group form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-            <button type="submit" class="btn btn-primary">Submit</button>
+ -->
+        <span id="avatarHelp" name="avatarHelp" class="form-text text-danger font-weight-bold"> Image Upload is Optional (file max size = 2 MB)
+        </span>
+        <br/>
+        <div class="input-group">              
+            <label class="input-group-btn">
+                <span class="btn btn-light">
+                        Browse&hellip; <input type="file" accept="image/*" class="custom-file-input" id="avatar" name="avatar" style="display: none;" multiple>               
+                </span>                    
+            </label>
+            <input type="text" class="form-control" readonly>
         </div>
-     -->
+        
+        <br/>
+        <br/>
         <button type="submit" name="submit" class="btn btn-primary btn-block">Submit</button>
     </form>
-<!--  
-    <button type="button" class="btn btn-dark">CLICK ME!</button>
-    <button type="button" class="btn btn-primary">CLICK ME!</button>
-    <button type="button" class="btn btn-success">CLICK ME!</button>
-    <a href="https://www.heroku.com" target="_blank" class="btn btn-danger">Heroku.com</a>
--->
-<br/>
-<br/>
 
+
+<br/>
+<br/>
+<br/>
 <?php
     require_once 'includes/footer.php'; ?>

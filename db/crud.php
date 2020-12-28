@@ -8,7 +8,7 @@
         }
 
         // function to insert a new record into the attendee db
-        public function insertAttendees($fname, $lname, $dob, $email, $contact, $specialty){
+        public function insertAttendees($fname, $lname, $dob, $email, $contact, $specialty, $avatar_path){
             try {
                 //$dob = "STR_TO_DATE('$dob','%d-%m-%y')"; STR_TO_DATE is a MySQL Function it does not work in PHP
                 //Convert $dob from string to DATE 
@@ -16,7 +16,8 @@
                 $timestamp = $d->getTimestamp();
                 $dob = $d->format('Y-m-d');
                 //echo "<p>From crud.php ->  formatted_dob = $dob<br></p>";
-                $sql = "INSERT INTO attendee (firstname,lastname,dateofbirth,emailaddress,contactnumber,specialty_id) VALUES (:fname, :lname, :dob, :email, :contact, :specialty)";
+                $sql = "INSERT INTO attendee (firstname,lastname,dateofbirth,emailaddress,contactnumber,specialty_id,avatar_path) 
+                VALUES (:fname, :lname, :dob, :email, :contact, :specialty, :avatar_path)";
                 $stmt = $this->db->prepare($sql);
 
                 $stmt->bindparam(':fname', $fname);
@@ -25,6 +26,7 @@
                 $stmt->bindparam(':email', $email);
                 $stmt->bindparam(':contact', $contact);
                 $stmt->bindparam(':specialty', $specialty);
+                $stmt->bindparam(':avatar_path', $avatar_path);
 
                 $stmt->execute();
                 return true;

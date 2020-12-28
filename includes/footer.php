@@ -1,5 +1,11 @@
+                
+<!-- Old Custom footer  replaced by the following <div>
                 <div class="text-center" id="footer">
                         <?php echo "<p>Copyright &copy; " . date("Y")." </p>";?>
+                </div>
+-->
+                <div id="footer" class="p-3  bg-primary text-white fixed-bottom">
+                        <p class="text-center">Copyright &copy; - IT Conference System <?php echo date("Y"); ?> </p>
                 </div>
         </div>
         <!--The following is taken from https://getbootstrap.com/docs/4.5/getting-started/introduction/#separate -->
@@ -25,7 +31,39 @@
                                 yearRange: "-100:+0"
                         });
                 } );
+                
+                $(function() {
+                        // This function is taken from Cory LaViska https://codepen.io/claviska/pen/vAgmd
+                        // We can attach the `fileselect` event to all file inputs on the page
+                        $(document).on('change', ':file', function() {
+                        var input = $(this),
+                        numFiles = input.get(0).files ? input.get(0).files.length : 1,
+                        label = input.val().replace(/\\/g, '/').replace(/.*\//, '');  //displays: fd_20200417_1.jpg
+                        //label = input.val().replace(/\\/g, '/'); // displays C:/fakepath/fd_20200417_1.jpg
+                        //alert(`numFiles is: ${numFiles}`);
+                        //alert(`label is: ${label}`);
+                        input.trigger('fileselect', [numFiles, label]);
+
+                        });
+
+                        // We can watch for our custom `fileselect` event like this
+                        $(document).ready( function() {
+                        $(':file').on('fileselect', function(event, numFiles, label) {
+                                var input = $(this).parents('.input-group').find(':text'),
+                                log = numFiles > 1 ? numFiles + ' files selected' : label;
+                                //alert(`input length is: ${input.length}`);
+                                //alert(`log is: ${log}`);
+                                if( input.length ) {
+                                input.val(log);
+                                } else {
+                                if( log ) alert(log);
+                                }
+                        });
+                        });
+
+                });
         </script>
+
   </script>
         </body>
 </html>

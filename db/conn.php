@@ -1,7 +1,6 @@
 <?php
     require_once 'localsettings.php';
-    
-    //$dsn = "mysql:host=$DB_HOST;dbname=$DB_NAME;charset=$DB_CHARSET";
+
     $host = getenv('DB_HOST');
     $db = getenv('DB_NAME');
     $user = getenv('DB_USER');
