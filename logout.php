@@ -6,5 +6,6 @@
 <?php 
     // session_destroy destroys the session then the header() function redirects to the home page
     session_destroy();
+    
     header('Location: index.php');
 ?>

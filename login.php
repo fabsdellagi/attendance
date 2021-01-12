@@ -1,8 +1,10 @@
 <?php 
         $title = 'User Login';
         require_once 'includes/header.php';
+        //require_once 'includes/home_header.php';
         require_once 'db/conn.php';
 
+        
         // If data was submitted via a form POST request, then 
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $username = strtolower(trim($_POST['username']));
@@ -16,7 +18,16 @@
             else {
                 $_SESSION['username'] = $username;
                 $_SESSION['userid'] = $result['id'];
-                header("Location: viewrecords.php");
+                
+                if($username == 'custom') {
+                    header("Location: custom_view_allrec.php");
+                }
+                elseif($username == 'guest') {
+                    header("Location: guest_view_allrec.php");
+                }
+                else {
+                    header("Location: viewrecords.php");
+                }
             }
         }
 

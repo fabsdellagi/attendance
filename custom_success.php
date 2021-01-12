@@ -1,10 +1,15 @@
 <?php 
-        $title = 'Success';
+        $title = 'Custom Success';
 
-        require_once 'includes/header.php'; 
+        //require_once 'includes/custom_header.php'; 
+        include_once 'includes/session.php';
         require_once 'includes/auth_check.php';
         require_once 'db/conn.php';
         require_once 'sendemail.php';
+
+        //echo "%%%%%%%%%%%%%%%%%%%<br />";
+        //echo " from custom_success.php browser_token => " . $_SESSION['browser_token'] . "<br />";
+        //echo "%%%%%%%%%%%%%%%%%%%<br />";
 
         if(isset($_POST['submit'])){
             // extract values from $_POST array
@@ -53,10 +58,10 @@
 
             // Call function to insert and track if success or not
             // echo "<p>From success.php: dob = $dob<br></p>";
-            $isSuccess = $crud->insertAttendees($n_name, $fname, $lname, $dob, $email, $contact, $specialty,$destination,NULL);
-            $specialtyName = $crud->getSpecialtyById($specialty);
-            var_dump($isSuccess);
             
+            $isSuccess = $crud->insertAttendees($n_name, $fname, $lname, $dob, $email, $contact, $specialty, $destination, $_SESSION['browser_token']);
+            $specialtyName = $crud->getSpecialtyById($specialty);
+            //var_dump($isSuccess);
             if($isSuccess){
                 //echo '<h1 class="text-center text-success">You Have Been Registered!</h1>';
                 // The SendMail call works only on localhost, it is NOT enabled on Heroku

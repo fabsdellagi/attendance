@@ -1,6 +1,7 @@
 <?php 
     $title = 'View Records';
-    require_once 'includes/admin_header.php';
+    require_once 'includes/header.php';
+    //require_once 'includes/guest_header.php';
     require_once 'includes/auth_check.php';
     require_once 'db/conn.php';
     require_once 'db/user.php';
@@ -46,15 +47,17 @@
 -->
                 <td><?php echo $r['name'] ?></td>             
                 <td>
-                    <a href="view.php?id=<?php echo $r['attendee_id'] ?>" class="btn btn-primary">View</a>
+<!--                    <a href="view.php?id=<?php echo $r['attendee_id'] ?>" class="btn btn-primary">View</a>  -->
                 
                 <?php
                      if( $role !== 'readOnly')  { 
                 ?> 
+                        <a href="view.php?id=<?php echo $r['attendee_id'] ?>" class="btn btn-primary">View</a> 
                         <a href="edit.php?id=<?php echo $r['attendee_id'] ?>" class="btn btn-warning">Edit</a>  
                 <?php }
                     else {
                 ?>
+                        <a href="guest_view.php?id=<?php echo $r['attendee_id'] ?>" class="btn btn-primary">View</a> 
                         <button href="edit.php?id=<?php echo $r['attendee_id'] ?>" 
                                 class="btn btn-warning" role="button" disabled>Edit</button>
                 <?php } ?>

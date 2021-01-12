@@ -1,6 +1,7 @@
 <?php 
-    $title = 'Edit Post';
+    $title = 'Edit Session Post';
     require_once 'includes/header.php'; 
+    //require_once 'includes/custom_header.php'; 
     require_once 'db/conn.php';
 
     // Get values from POST operation
@@ -21,10 +22,9 @@
         //echo "$id | $n_name | $fname | $lname | $dob | $email | $contact | $specialty  </br>";
         $result = $crud->editAttendee($n_name, $fname, $lname, $dob, $email, $contact, $specialty);
         //echo "</br>after editAttendee </br>";
-        
         // Riderect to index.php
         if($result){
-            header("Location: viewrecords.php");
+            header("Location: custom_view_allrec.php");
         }
         else {
             include 'includes/errormessage.php';

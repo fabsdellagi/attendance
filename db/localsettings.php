@@ -10,5 +10,4 @@
     //putenv("DB_USER=uuuu");
     //putenv("DB_PASSWORD=pppp");
     //putenv("DB_CHARSET=utf8mb4");
-
 ?>

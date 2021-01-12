@@ -1,7 +1,7 @@
 <?php 
-    $title = 'View Record Details';
-    
+    $title = 'View Session Record Details';
     require_once 'includes/header.php';
+    //require_once 'includes/custom_header.php';
     require_once 'includes/auth_check.php';
     require_once 'db/conn.php';
 
@@ -41,34 +41,11 @@
     </div>
     <br/>
     
-    <a href="viewrecords.php" class="btn btn-info">Back to List</a>
-    
-    <?php
-        if( $role !== 'readOnly')  { 
-    ?>
-                <a href="edit.php?id=<?php echo $result['attendee_id'] ?>" class="btn btn-warning">Edit</a>
-    <?php }
-        else {        
-    ?> 
-                <button href="edit.php?id=<?php echo $result['attendee_id'] ?>" class="btn btn-warning" role="button" disabled>Edit</button>
-        <?php } ?>
-
-
-    <?php
-        if( $role == 'admin')  { 
-    ?>
-            <a onclick="return confirm('Are you sure you want to delete this record?')"                          
-                        href="delete.php?id=<?php echo $result['attendee_id'] ?>" 
+    <a href="custom_view_allrec.php" class="btn btn-info">Back to List</a>
+    <a href="edit_session.php?id=<?php echo $result['attendee_id'] ?>" class="btn btn-warning">Edit</a>
+    <a onclick="return confirm('Are you sure you want to delete this record?')"                          
+                        href="delete_session.php?id=<?php echo $result['attendee_id'] ?>" 
                         class="btn btn-danger"  role="button">Delete</a>
-    <?php   }
-            else {
-    ?>
-            <!-- Next MUST be <button !! because if replaced by <a it DOESN'T WORK !!!!   --> 
-            <button onclick="return confirm('Are you sure you want to delete this record?')"                          
-                        href="delete.php?id=<?php echo $result['attendee_id'] ?>" 
-                        class="btn btn-danger"  role="button" disabled>Delete</button>       
-            <?php } ?>
-
     
 <?php } ?>
 

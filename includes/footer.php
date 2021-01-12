@@ -4,8 +4,8 @@
                         <?php echo "<p>Copyright &copy; " . date("Y")." </p>";?>
                 </div>
 -->
-                <div id="footer" class="p-3  bg-primary text-white fixed-bottom">
-                        <p class="text-center">Copyright &copy; - IT Conference System <?php echo date("Y"); ?> </p>
+                <div id="footer" class="p-1 bg-primary text-white fixed-bottom">
+                        <p class="text-center align-items-center">Copyright &copy; - IT Conference System <?php echo date("Y"); ?> </p>
                 </div>
         </div>
         <!--The following is taken from https://getbootstrap.com/docs/4.5/getting-started/introduction/#separate -->

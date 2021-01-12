@@ -32,28 +32,10 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse container" id="navbarNavAltMarkup">
-
                 <div class="navbar-nav mr-auto">
-<!--
-                    <a class="nav-link active" href="index.php">Home <span class="sr-only">(current)</span></a>
+<!--                    <a class="nav-link active" href="index.php">Home <span class="sr-only">(current)</span></a>   -->
                     <a class="nav-link" href="registration.php">Registration <span class="sr-only">(current)</span></a>
                     <a class="nav-link" href="viewrecords.php">View Attendees</a>
--->
-                    <a class="nav-link active" href="index.php">Home <span class="sr-only">(current)</span></a>
-                    <?php
-                        //var_dump($_SESSION['userid']);
-                        if(isset($_SESSION['userid'])) { 
-                            if($_SESSION['username'] == 'guest') {  ?>                                    
-                                <a class="nav-link" href="guest_view_allrec.php">View Attendees</a>
-                      <?php } elseif($_SESSION['username'] == 'custom') { ?>
-                                    <a class="nav-link" href="custom_registration.php">Registration <span class="sr-only">(current)</span></a>
-                                    <a class="nav-link" href="custom_view_allrec.php">View Attendees</a>
-                                    <?php  } else { ?>
-                                        <a class="nav-link" href="registration.php">Registration <span class="sr-only">(current)</span></a>
-                                        <a class="nav-link" href="viewrecords.php">View Attendees</a>
-                                <?php } ?>                       
-                    <?php  } ?>
-
                 </div>
                 <div class="navbar-nav ml-auto">
                     <?php
@@ -65,7 +47,6 @@
                         <a class="nav-item nav-link" href="logout.php">Logout <span class="sr-only">(current)</span></a>
                     <?php } ?>
                 </div>
-
             </div>
         </nav>
     <div class="container">

@@ -2,6 +2,7 @@
     $title = 'View Record Details';
     
     require_once 'includes/header.php';
+    //require_once 'includes/guest_header.php';
     require_once 'includes/auth_check.php';
     require_once 'db/conn.php';
 
@@ -41,15 +42,15 @@
     </div>
     <br/>
     
-    <a href="viewrecords.php" class="btn btn-info">Back to List</a>
-    
     <?php
         if( $role !== 'readOnly')  { 
     ?>
+                <a href="viewrecords.php" class="btn btn-info">Back to List</a>
                 <a href="edit.php?id=<?php echo $result['attendee_id'] ?>" class="btn btn-warning">Edit</a>
     <?php }
         else {        
     ?> 
+                <a href="guest_view_allrec.php" class="btn btn-info">Back to List</a>
                 <button href="edit.php?id=<?php echo $result['attendee_id'] ?>" class="btn btn-warning" role="button" disabled>Edit</button>
         <?php } ?>
 

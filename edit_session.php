@@ -1,6 +1,7 @@
 <?php 
-        $title = 'Edit Record';
+        $title = 'Edit Session\'s Record';
         require_once 'includes/header.php';
+        //require_once 'includes/custom_header.php';
         require_once 'includes/auth_check.php';
         require_once 'db/conn.php';
 
@@ -9,19 +10,19 @@
         if(!isset($_GET['id'])){
             // echo Error Msg
             include 'includes/errormessage.php';
-            header("Location: viewrecords.php");
+            header("Location: viewsessionrecords.php");
         } 
         else {
             $id = $_GET['id'];
             $attendee  = $crud->getAttendeeDetails($id);       
 ?>
 
-    <h1 class="text-center">Edit Record</h1>
+    <h1 class="text-center">Edit Session's Record</h1>
     
     <br/>
     <br/>
 
-    <form method="post" action="editpost.php">
+    <form method="post" action="edit_session_post.php">
         <input type="hidden" name="id" value="<?php echo $attendee['attendee_id']?>" />
         <div class="form-group">
             <label for="nickName">Nickname</label>
@@ -72,7 +73,7 @@
             <button type="submit" class="btn btn-primary">Submit</button>
         </div>
      -->
-        <a href="viewrecords.php" class="btn btn-dark">Back To List</a>
+        <a href="custom_view_allrec.php" class="btn btn-dark">Back To List</a>
         <button type="submit" name="submit" class="btn btn-success">Save Changes</button>
     </form>
 
